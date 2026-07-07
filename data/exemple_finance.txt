@@ -1,31 +1,147 @@
-Les systèmes financiers modernes et leur transformation numérique
+POLITIQUE INTERNE DE GTI FINANCIAL SOFTWARE
 
-Un système financier regroupe l'ensemble des institutions, marchés et instruments qui permettent la circulation de l'argent au sein d'une économie. Il comprend notamment les banques commerciales, les banques centrales, les compagnies d'assurance, les marchés boursiers ainsi que les organismes de régulation chargés de superviser l'ensemble de ces acteurs.
+1. PRESENTATION DE L'ENTREPRISE
 
-Le rôle central des banques
+GTI Financial Software est une entreprise spécialisée dans le développement de solutions logicielles destinées au secteur financier. 
+L'entreprise fournit des plateformes numériques permettant aux institutions financières d'améliorer la gestion des opérations, la sécurité des données et l'automatisation des processus.
 
-Les banques commerciales jouent un rôle central dans le système financier en assurant la collecte de l'épargne des particuliers et des entreprises, puis en redistribuant ces fonds sous forme de crédits. Cette fonction d'intermédiation permet de financer aussi bien la consommation des ménages que les investissements des entreprises, contribuant ainsi directement à la croissance économique.
+Les employés de GTI Financial Software doivent respecter les règles internes afin de garantir un environnement professionnel, sécurisé et collaboratif.
 
-Les banques centrales, quant à elles, ont pour mission principale de garantir la stabilité monétaire d'un pays ou d'une zone économique. Elles fixent les taux d'intérêt directeurs, régulent la masse monétaire en circulation et interviennent en cas de crise pour éviter l'effondrement du système bancaire.
+Cette politique interne définit les règles concernant l'organisation du travail, la sécurité informatique, les congés, le télétravail, les horaires, les responsabilités des employés et l'utilisation des ressources de l'entreprise.
 
-La gestion des risques financiers
 
-La gestion des risques est un pilier fondamental de tout système financier solide. Les institutions doivent identifier, mesurer et limiter plusieurs types de risques, notamment le risque de crédit, lié à la possibilité qu'un emprunteur ne rembourse pas sa dette, le risque de marché, lié aux fluctuations des cours boursiers et des taux de change, ainsi que le risque opérationnel, lié aux défaillances internes ou aux fraudes.
+2. ORGANISATION DU TRAVAIL
 
-Pour encadrer ces risques, des réglementations strictes ont été mises en place au fil des décennies, en particulier après les grandes crises financières. Ces règles imposent aux banques de conserver un niveau minimum de fonds propres, afin de pouvoir absorber d'éventuelles pertes sans mettre en danger l'ensemble du système.
+Les employés doivent respecter les horaires de travail définis par l'entreprise.
+La journée professionnelle commence généralement à 8h30 et se termine à 17h30 du lundi au vendredi.
 
-L'essor des technologies financières
+Chaque employé doit être présent pendant les heures obligatoires et informer son responsable en cas de retard ou d'absence imprévue.
 
-Depuis une dizaine d'années, le secteur financier connaît une transformation numérique majeure, souvent désignée sous le terme de "fintech". De nouveaux acteurs proposent des services de paiement instantané, de gestion de portefeuille automatisée ou encore de prêt entre particuliers, bousculant les modèles traditionnels des banques établies.
+Les réunions internes doivent être planifiées à l'avance afin de permettre aux équipes de mieux organiser leurs activités.
 
-L'intelligence artificielle occupe une place grandissante dans cette transformation. Elle est utilisée pour détecter automatiquement les transactions frauduleuses, évaluer la solvabilité des emprunteurs de manière plus précise, ou encore répondre aux questions des clients à partir de documents internes tels que les contrats ou les politiques de remboursement.
+Les employés sont encouragés à collaborer avec leurs collègues et à partager leurs connaissances afin d'améliorer la qualité des projets.
 
-Les défis de la conformité réglementaire
 
-Les institutions financières doivent également faire face à des exigences de conformité de plus en plus complexes. Chaque pays impose ses propres règles concernant la lutte contre le blanchiment d'argent, la protection des données des clients ou encore la transparence des frais bancaires.
+3. POLITIQUE DE TELETRAVAIL
 
-Cette complexité réglementaire pousse de nombreuses institutions à développer des outils capables d'interroger rapidement leurs propres documents internes pour vérifier une politique précise, un taux applicable ou une procédure à suivre, plutôt que de chercher manuellement dans des centaines de pages de documentation.
+GTI Financial Software autorise le télétravail pour certains employés selon les besoins du service et l'accord du responsable hiérarchique.
 
-Conclusion
+Un employé peut effectuer jusqu'à deux jours de télétravail par semaine.
 
-Le système financier repose sur un équilibre délicat entre innovation, stabilité et régulation. À mesure que les technologies évoluent, les institutions financières doivent constamment adapter leurs pratiques tout en respectant un cadre réglementaire strict, garant de la confiance des épargnants et des investisseurs.
+Toute demande de télétravail doit être envoyée au responsable au minimum 48 heures avant la date souhaitée.
+
+Le télétravail nécessite une connexion internet stable et un environnement permettant de travailler dans de bonnes conditions.
+
+Les employés travaillant à distance doivent rester disponibles pendant les heures normales de travail et participer aux réunions en ligne organisées par leur équipe.
+
+Le télétravail ne doit pas affecter la productivité ni la qualité des tâches réalisées.
+
+
+4. POLITIQUE DES CONGES
+
+Chaque employé bénéficie de congés annuels conformément aux règles de l'entreprise.
+
+Les demandes de congé doivent être envoyées au responsable au moins cinq jours avant la date prévue.
+
+L'approbation du responsable est obligatoire avant de prendre un congé.
+
+En cas d'urgence personnelle ou médicale, l'employé doit prévenir son responsable dans les meilleurs délais.
+
+Les périodes de congé doivent être organisées afin de garantir la continuité des activités de l'équipe.
+
+
+5. SECURITE INFORMATIQUE
+
+La sécurité des informations est une priorité pour GTI Financial Software.
+
+Les employés doivent utiliser des mots de passe complexes et ne jamais partager leurs identifiants avec une autre personne.
+
+Les mots de passe doivent contenir au minimum huit caractères avec une combinaison de lettres, chiffres et caractères spéciaux.
+
+Il est interdit d'installer des logiciels non autorisés sur les ordinateurs professionnels.
+
+Les employés doivent signaler immédiatement toute activité suspecte, tentative de phishing ou problème de sécurité au service informatique.
+
+Les données confidentielles de l'entreprise ne doivent jamais être transmises à des personnes externes sans autorisation.
+
+
+6. UTILISATION DES EQUIPEMENTS
+
+Les ordinateurs, serveurs et autres équipements fournis par l'entreprise doivent être utilisés uniquement dans un cadre professionnel.
+
+Chaque employé est responsable du matériel qui lui est confié.
+
+En cas de perte ou de dommage d'un équipement, l'employé doit informer rapidement le département informatique.
+
+Les équipements de l'entreprise ne doivent pas être utilisés pour des activités illégales ou personnelles excessives.
+
+
+7. PROTECTION DES DONNEES
+
+GTI Financial Software applique des règles strictes concernant la protection des données.
+
+Les employés doivent respecter la confidentialité des informations clients et partenaires.
+
+Les documents contenant des informations sensibles doivent être stockés dans des espaces sécurisés.
+
+L'accès aux données est limité uniquement aux employés ayant une autorisation nécessaire.
+
+Toute fuite de données doit être signalée immédiatement au responsable de sécurité.
+
+
+8. COMMUNICATION INTERNE
+
+Les employés doivent utiliser les outils officiels de communication pour les échanges professionnels.
+
+Les messages envoyés dans les plateformes collaboratives doivent rester professionnels et respectueux.
+
+Les informations importantes concernant les projets doivent être documentées afin de faciliter le suivi.
+
+Les équipes doivent organiser régulièrement des réunions pour suivre l'avancement des tâches.
+
+
+9. DEVELOPPEMENT ET FORMATION
+
+GTI Financial Software encourage ses employés à développer leurs compétences techniques et professionnelles.
+
+Des formations internes peuvent être proposées sur différents domaines comme le développement logiciel, l'intelligence artificielle, la cybersécurité et la gestion de projet.
+
+Les employés sont encouragés à participer aux formations afin d'améliorer leurs connaissances.
+
+L'entreprise favorise l'apprentissage continu et l'innovation.
+
+
+10. RESPONSABILITES DES EMPLOYES
+
+Chaque employé doit respecter les règles internes et contribuer à un environnement de travail positif.
+
+Les employés doivent réaliser leurs missions avec professionnalisme et respecter les délais définis.
+
+Toute violation importante des règles internes peut entraîner des mesures disciplinaires.
+
+Les employés doivent protéger l'image et les intérêts de l'entreprise.
+
+
+11. PROCEDURE EN CAS D'INCIDENT
+
+En cas d'incident informatique, l'employé doit contacter immédiatement l'équipe technique.
+
+Les incidents peuvent inclure une perte de données, une attaque informatique, une tentative de phishing ou un accès non autorisé.
+
+L'équipe informatique analyse l'incident et met en place les actions nécessaires pour résoudre le problème.
+
+Un rapport d'incident peut être créé afin d'éviter la répétition du problème.
+
+
+12. POLITIQUE D'ACCES AUX SYSTEMES
+
+L'accès aux applications internes nécessite un compte utilisateur personnel.
+
+Chaque utilisateur possède des droits d'accès définis selon son rôle dans l'entreprise.
+
+Les employés ne doivent jamais utiliser le compte d'une autre personne.
+
+Les accès inutilisés peuvent être désactivés pour renforcer la sécurité.
+
+
+FIN DE LA POLITIQUE INTERNE
