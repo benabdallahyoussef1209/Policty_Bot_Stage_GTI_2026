@@ -1,0 +1,147 @@
+POLITIQUE INTERNE DE GTI FINANCIAL SOFTWARE
+
+1. PRESENTATION DE L'ENTREPRISE
+
+GTI Financial Software est une entreprise spécialisée dans le développement de solutions logicielles destinées au secteur financier. 
+L'entreprise fournit des plateformes numériques permettant aux institutions financières d'améliorer la gestion des opérations, la sécurité des données et l'automatisation des processus.
+
+Les employés de GTI Financial Software doivent respecter les règles internes afin de garantir un environnement professionnel, sécurisé et collaboratif.
+
+Cette politique interne définit les règles concernant l'organisation du travail, la sécurité informatique, les congés, le télétravail, les horaires, les responsabilités des employés et l'utilisation des ressources de l'entreprise.
+
+
+2. ORGANISATION DU TRAVAIL
+
+Les employés doivent respecter les horaires de travail définis par l'entreprise.
+La journée professionnelle commence généralement à 8h30 et se termine à 17h30 du lundi au vendredi.
+
+Chaque employé doit être présent pendant les heures obligatoires et informer son responsable en cas de retard ou d'absence imprévue.
+
+Les réunions internes doivent être planifiées à l'avance afin de permettre aux équipes de mieux organiser leurs activités.
+
+Les employés sont encouragés à collaborer avec leurs collègues et à partager leurs connaissances afin d'améliorer la qualité des projets.
+
+
+3. POLITIQUE DE TELETRAVAIL
+
+GTI Financial Software autorise le télétravail pour certains employés selon les besoins du service et l'accord du responsable hiérarchique.
+
+Un employé peut effectuer jusqu'à deux jours de télétravail par semaine.
+
+Toute demande de télétravail doit être envoyée au responsable au minimum 48 heures avant la date souhaitée.
+
+Le télétravail nécessite une connexion internet stable et un environnement permettant de travailler dans de bonnes conditions.
+
+Les employés travaillant à distance doivent rester disponibles pendant les heures normales de travail et participer aux réunions en ligne organisées par leur équipe.
+
+Le télétravail ne doit pas affecter la productivité ni la qualité des tâches réalisées.
+
+
+4. POLITIQUE DES CONGES
+
+Chaque employé bénéficie de congés annuels conformément aux règles de l'entreprise.
+
+Les demandes de congé doivent être envoyées au responsable au moins cinq jours avant la date prévue.
+
+L'approbation du responsable est obligatoire avant de prendre un congé.
+
+En cas d'urgence personnelle ou médicale, l'employé doit prévenir son responsable dans les meilleurs délais.
+
+Les périodes de congé doivent être organisées afin de garantir la continuité des activités de l'équipe.
+
+
+5. SECURITE INFORMATIQUE
+
+La sécurité des informations est une priorité pour GTI Financial Software.
+
+Les employés doivent utiliser des mots de passe complexes et ne jamais partager leurs identifiants avec une autre personne.
+
+Les mots de passe doivent contenir au minimum huit caractères avec une combinaison de lettres, chiffres et caractères spéciaux.
+
+Il est interdit d'installer des logiciels non autorisés sur les ordinateurs professionnels.
+
+Les employés doivent signaler immédiatement toute activité suspecte, tentative de phishing ou problème de sécurité au service informatique.
+
+Les données confidentielles de l'entreprise ne doivent jamais être transmises à des personnes externes sans autorisation.
+
+
+6. UTILISATION DES EQUIPEMENTS
+
+Les ordinateurs, serveurs et autres équipements fournis par l'entreprise doivent être utilisés uniquement dans un cadre professionnel.
+
+Chaque employé est responsable du matériel qui lui est confié.
+
+En cas de perte ou de dommage d'un équipement, l'employé doit informer rapidement le département informatique.
+
+Les équipements de l'entreprise ne doivent pas être utilisés pour des activités illégales ou personnelles excessives.
+
+
+7. PROTECTION DES DONNEES
+
+GTI Financial Software applique des règles strictes concernant la protection des données.
+
+Les employés doivent respecter la confidentialité des informations clients et partenaires.
+
+Les documents contenant des informations sensibles doivent être stockés dans des espaces sécurisés.
+
+L'accès aux données est limité uniquement aux employés ayant une autorisation nécessaire.
+
+Toute fuite de données doit être signalée immédiatement au responsable de sécurité.
+
+
+8. COMMUNICATION INTERNE
+
+Les employés doivent utiliser les outils officiels de communication pour les échanges professionnels.
+
+Les messages envoyés dans les plateformes collaboratives doivent rester professionnels et respectueux.
+
+Les informations importantes concernant les projets doivent être documentées afin de faciliter le suivi.
+
+Les équipes doivent organiser régulièrement des réunions pour suivre l'avancement des tâches.
+
+
+9. DEVELOPPEMENT ET FORMATION
+
+GTI Financial Software encourage ses employés à développer leurs compétences techniques et professionnelles.
+
+Des formations internes peuvent être proposées sur différents domaines comme le développement logiciel, l'intelligence artificielle, la cybersécurité et la gestion de projet.
+
+Les employés sont encouragés à participer aux formations afin d'améliorer leurs connaissances.
+
+L'entreprise favorise l'apprentissage continu et l'innovation.
+
+
+10. RESPONSABILITES DES EMPLOYES
+
+Chaque employé doit respecter les règles internes et contribuer à un environnement de travail positif.
+
+Les employés doivent réaliser leurs missions avec professionnalisme et respecter les délais définis.
+
+Toute violation importante des règles internes peut entraîner des mesures disciplinaires.
+
+Les employés doivent protéger l'image et les intérêts de l'entreprise.
+
+
+11. PROCEDURE EN CAS D'INCIDENT
+
+En cas d'incident informatique, l'employé doit contacter immédiatement l'équipe technique.
+
+Les incidents peuvent inclure une perte de données, une attaque informatique, une tentative de phishing ou un accès non autorisé.
+
+L'équipe informatique analyse l'incident et met en place les actions nécessaires pour résoudre le problème.
+
+Un rapport d'incident peut être créé afin d'éviter la répétition du problème.
+
+
+12. POLITIQUE D'ACCES AUX SYSTEMES
+
+L'accès aux applications internes nécessite un compte utilisateur personnel.
+
+Chaque utilisateur possède des droits d'accès définis selon son rôle dans l'entreprise.
+
+Les employés ne doivent jamais utiliser le compte d'une autre personne.
+
+Les accès inutilisés peuvent être désactivés pour renforcer la sécurité.
+
+
+FIN DE LA POLITIQUE INTERNE
