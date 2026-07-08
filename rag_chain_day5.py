@@ -82,7 +82,7 @@ Réponse :
 
 # Initialisation du modèle LLM local Llama 3.2 avec Ollama
 # Ce modèle sera chargé de générer la réponse à partir du contexte fourni
-llm = ChatOllama(model="llama3.2:1b", temperature=0)
+llm = ChatOllama(model="phi3", temperature=0)
 
 
 # Fonction permettant de transformer les documents récupérés en un seul texte
@@ -116,7 +116,7 @@ rag_chain = (
 
 
 # Question posée au système RAG concernant le contenu du document
-question = "Combien de jours de télétravail par semaine sont autorisés ?"
+question = "Où se trouve le siège social de l'entreprise ?"
 # Exécution de toute la chaîne RAG :
 # recherche des documents → création du contexte → génération de la réponse
 reponse = rag_chain.invoke(question)
@@ -127,10 +127,11 @@ print(f"Question : {question}")
 
 # Affichage de la réponse générée par le modèle
 print(f"Réponse : {reponse}")
-question = "Combien de jours de télétravail par semaine sont autorisés ?"
+question = "Où se trouve le siège social de l'entreprise ?"
 docs_trouves = retriever.invoke(question)
 # ===== Test — Affichage des chunks récupérés par le retriever =====    
-question = "Combien de jours de télétravail par semaine sont autorisés ?"
+"""
+question = "Quels sont les horaires de travail chez GTI Financial Software ?"
 docs_trouves = retriever.invoke(question)
 
 print("=== Chunks récupérés ===")
@@ -140,4 +141,4 @@ for i, doc in enumerate(docs_trouves):
     print()
 
 reponse = rag_chain.invoke(question)
-print(f"Réponse : {reponse}")
+print(f"Réponse : {reponse}") """
