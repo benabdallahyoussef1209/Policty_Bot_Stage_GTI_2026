@@ -1,0 +1,5 @@
+Une carte de paiement est un moyen de paiement se présentant sous la forme d'une carte plastique ou métallique mesurant 85,60 × 53,98 mm, équipée d'une bande magnétique et/ou d'une puce électronique (il s'agit alors d'une carte à puce), qui permet le paiement, auprès de commerçants possédant un terminal de paiement électronique (TPE) ou auprès de commerces en ligne.
+
+Le plus souvent, il s'agit d'une carte de « paiement » et de « retrait », car elle permet aussi les retraits d'espèces aux guichets automatiques bancaires.
+
+La carte de paiement est associée à un ou à plusieurs réseaux de paiements (co-badgeage) qui peuvent être déployés mondialement tel que Visa, Mastercard, American Express, Diners, JCB, ou dans un pays seulement tel que CB en France, Bancontact en Belgique, Interac au Canada, ou bien AfriGO au Nigéria[1]. En Europe, la réglementation impose depuis 2015 le choix final au titulaire de la carte[2].

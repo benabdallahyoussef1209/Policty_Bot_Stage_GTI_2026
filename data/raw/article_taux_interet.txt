@@ -1,0 +1,13 @@
+Le taux d'intérêt dit nominal correspond au taux tel qu'établi au moment de la conclusion du prêt. Le taux d'intérêt dit réel mesure la charge d'intérêt qui s'applique en réalité au prêt concerné compte tenu de l'évolution des prix.
+
+Le taux d'intérêt peut être convenu pour une valeur fixe — constante sur toute la durée du prêt — ou pour une valeur variable. Dans ce cas, le profil d'évolution du taux est fixé d'après une formule de variation définie contractuellement, en rapport avec un indicateur de référence.
+
+Selon la durée du prêt, le niveau de taux appliqué est conditionné par celui constaté sur le marché, ainsi :
+
+les taux d'intérêt à court terme sont fixés sur le marché monétaire, où la banque centrale joue un rôle déterminant ;
+les taux d'intérêt à moyen et long terme, appelés aussi rendements obligataires, sont négociés sur le marché obligataire.
+Les taux d'intérêt de long terme sont généralement plus élevés que ceux de court terme, du fait de l'existence d'une prime de risque pour les placements de long terme. Dans certaines situations exceptionnelles, une inversion de la courbe des taux peut avoir lieu[1]
+
+Pour les économistes de l'école néoclassique, le taux d’intérêt est la rémunération de l’abstinence : celui qui prête renonce à une consommation immédiate pour épargner. Le taux d’intérêt devient le prix du temps, la récompense de l’attente.
+
+Pour l'économiste anglais John Maynard Keynes, le taux d’intérêt mesure la répugnance des détenteurs de monnaie à aliéner leur droit d’en disposer à tout moment car il conduit les agents à choisir entre la détention d'actifs liquides et leur placement consenti contre rémunération. Le taux d'intérêt est le prix à payer au prêteur pour qu'il renonce à sa préférence pour la liquidité.
