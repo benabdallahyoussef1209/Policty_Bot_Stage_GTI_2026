@@ -113,8 +113,21 @@ rag_chain = (
     # Conversion de la réponse du LLM en simple texte
     | StrOutputParser()
 )
+# la question est posée en imput
+# Demande à l'utilisateur d'entrer sa question
+question = input("Posez votre question : ")
+
+# Exécution de la chaîne RAG avec la question saisie
+reponse = rag_chain.invoke(question)
+
+# Affichage de la question utilisateur
+print(f"\nQuestion : {question}")
+
+# Affichage de la réponse générée par le modèle
+print(f"Réponse : {reponse}")
 
 
+"""" la question est posée dans le script pas un imput
 # Question posée au système RAG concernant le contenu du document
 question = "Combien de jours de télétravail par semaine sont autorisés ?"
 # Exécution de toute la chaîne RAG :
@@ -129,6 +142,7 @@ print(f"Question : {question}")
 print(f"Réponse : {reponse}")
 question = "Combien de jours de télétravail par semaine sont autorisés ?"
 docs_trouves = retriever.invoke(question)
+"""""
 # ===== Test — Affichage des chunks récupérés par le retriever =====    
 """
 question = "Quels sont les horaires de travail chez GTI Financial Software ?"
