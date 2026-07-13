@@ -116,7 +116,7 @@ rag_chain = (
 
 
 # Question posée au système RAG concernant le contenu du document
-question = "Où se trouve le siège social de l'entreprise ?"
+question = "Combien de jours de télétravail par semaine sont autorisés ?"
 # Exécution de toute la chaîne RAG :
 # recherche des documents → création du contexte → génération de la réponse
 reponse = rag_chain.invoke(question)
@@ -127,7 +127,7 @@ print(f"Question : {question}")
 
 # Affichage de la réponse générée par le modèle
 print(f"Réponse : {reponse}")
-question = "Où se trouve le siège social de l'entreprise ?"
+question = "Combien de jours de télétravail par semaine sont autorisés ?"
 docs_trouves = retriever.invoke(question)
 # ===== Test — Affichage des chunks récupérés par le retriever =====    
 """
