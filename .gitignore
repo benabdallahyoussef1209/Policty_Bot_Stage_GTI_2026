@@ -1,3 +1,12 @@
+# Environnement virtuel
 Rag_stage_GTI/
+
+# Fichiers Python compilés
 __pycache__/
+*.pyc
+
+# Base vectorielle générée automatiquement - ne pas commiter
 chroma_db/
+
+# Variables d'environnement (si tu en ajoutes plus tard)
+.env

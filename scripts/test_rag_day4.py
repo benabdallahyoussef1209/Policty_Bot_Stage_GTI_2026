@@ -40,4 +40,4 @@ document_ids = vector_store.add_documents(  # Ajoute tous les chunks de texte à
     documents=all_splits  # Les documents découpés sont convertis en embeddings puis stockés dans Chroma avec leurs métadonnées.
 )
 
-print(f"{len(document_ids)} chunks stockés dans Chroma")  # Affiche le nombre de chunks qui ont été indexés et enregistrés dans la base vectorielle.
+print(f"{len(document_ids)} chunks stockés dans Chroma")  # Affiche le nombre de chunks qui ont été indexés et enregistrés dans la base vectorielle
