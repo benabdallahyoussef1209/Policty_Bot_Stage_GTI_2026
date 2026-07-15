@@ -53,8 +53,9 @@ def build_vectorstore():
     ajouter de nouveaux, pour éviter les doublons lors de relances multiples.
     """
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
-    )
+        model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+)
+    
 
     vector_store = Chroma(
         collection_name=COLLECTION_NAME,
@@ -98,7 +99,8 @@ def reset_vectorstore():
     Supprime tous les documents de la collection, sans supprimer le dossier.
     """
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
+        model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+
     )
 
     vector_store = Chroma(
