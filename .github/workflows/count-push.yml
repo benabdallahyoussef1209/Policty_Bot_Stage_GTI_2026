@@ -1,0 +1,37 @@
+name: Count Push
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  increment-counter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout profile repo
+        uses: actions/checkout@v4
+        with:
+          repository: benabdallahyoussef1209/benabdallahyoussef1209
+          token: ${{ secrets.PROFILE_PAT }}
+          path: profile-repo
+
+      - name: Increment push counter
+        run: |
+          cd profile-repo
+          if [ ! -f push-count.json ]; then
+            echo '{"schemaVersion":1,"label":"total pushes","message":"0","color":"blueviolet"}' > push-count.json
+          fi
+          COUNT=$(jq -r '.message' push-count.json)
+          NEW_COUNT=$((COUNT + 1))
+          jq --arg n "$NEW_COUNT" '.message = $n' push-count.json > tmp.json && mv tmp.json push-count.json
+          cat push-count.json
+
+      - name: Commit and push counter
+        run: |
+          cd profile-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add push-count.json
+          git commit -m "chore: increment push counter" || exit 0
+          git push
