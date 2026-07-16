@@ -2,48 +2,58 @@
 import os
 
 # Importation des chargeurs de documents de LangChain
-# TextLoader : permet de lire les fichiers texte (.txt)
-# PyPDFLoader : permet de lire les fichiers PDF (.pdf)
 from langchain_community.document_loaders import TextLoader, PyPDFLoader
 
-# Définition du dossier contenant les documents à traiter
-dossier = "data/raw"
 
-# Récupération de la liste des fichiers présents dans le dossier
-# sorted() permet de les trier par ordre alphabétique
-fichiers = sorted(os.listdir(dossier))
+# ==========================================================
+# Fonction : Charger un document selon son extension
+# ==========================================================
+def charger_document(chemin):
+    """
+    Charge un fichier texte (.txt) ou PDF (.pdf)
+    et retourne une liste d'objets Document.
+    """
 
-# Affichage du nombre total de fichiers détectés
-print(f"Nombre de fichiers trouvés : {len(fichiers)}\n")
-
-# Parcours de chaque fichier contenu dans le dossier
-for nom_fichier in fichiers:
-
-    # Construction du chemin complet vers le fichier
-    chemin = os.path.join(dossier, nom_fichier)
-
-    # Vérification si le fichier est un fichier texte
-    if nom_fichier.endswith(".txt"):
-
-        # Création d'un chargeur adapté aux fichiers texte avec l'encodage UTF-8
+    if chemin.endswith(".txt"):
         loader = TextLoader(chemin, encoding="utf-8")
 
-    # Vérification si le fichier est un document PDF
-    elif nom_fichier.endswith(".pdf"):
-
-        # Création d'un chargeur spécialisé pour les fichiers PDF
+    elif chemin.endswith(".pdf"):
         loader = PyPDFLoader(chemin)
 
-    # Si le format du fichier n'est pas pris en charge, on passe au fichier suivant
     else:
+        return None
+
+    return loader.load()
+
+
+# ==========================================================
+# Programme principal
+# ==========================================================
+
+# Dossier contenant les documents
+dossier = "data/raw"
+
+# Liste des fichiers du dossier
+fichiers = sorted(os.listdir(dossier))
+
+# Affiche le nombre total de fichiers
+print(f"Nombre de fichiers trouvés : {len(fichiers)}\n")
+
+# Parcourt chaque fichier
+for nom_fichier in fichiers:
+
+    # Construit le chemin complet du fichier
+    chemin = os.path.join(dossier, nom_fichier)
+
+    # Charge le document
+    docs = charger_document(chemin)
+
+    # Ignore les formats non pris en charge
+    if docs is None:
         continue
 
-    # Chargement du contenu du document dans une liste d'objets Document
-    docs = loader.load()
-
-    # Affichage du nom du fichier en cours de traitement
+    # Affiche le nom du document
     print(f"=== {nom_fichier} ===")
-
     # Affichage du nombre de blocs obtenus
     # Pour un PDF, cela correspond généralement au nombre de pages
     # Pour un fichier texte, cela correspond généralement à un seul bloc
