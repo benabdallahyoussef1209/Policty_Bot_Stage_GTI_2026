@@ -1,43 +1,166 @@
-#### CHARGDEMENTTT DE FICHIER DE TEST POUR RAG DAY 4###
+# ==========================================================
+# RAG DAY 4 : Chargement, découpage et stockage vectoriel
+# ==========================================================
 
-from langchain_community.document_loaders import TextLoader  # Importe la classe permettant de charger un fichier texte.
 
-loader = TextLoader("data/exemple_finance.txt", encoding="utf-8")  # Crée un chargeur pour le fichier texte en UTF-8.
-docs = loader.load()  # Charge le contenu du fichier dans une liste de documents.
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
 
-print(f"Nombre de documents chargés : {len(docs)}")  # Affiche le nombre de documents chargés.
-print(f"Aperçu : {docs[0].page_content[:200]}")  # Affiche les 200 premiers caractères du premier document.
-### DECOUPAGE EN CHUNKSS###
 
-from langchain_text_splitters import RecursiveCharacterTextSplitter  # Importe le découpeur de texte de LangChain.
 
-text_splitter = RecursiveCharacterTextSplitter(  # Crée un objet pour découper les documents en morceaux.
-    chunk_size=500,      # Définit une taille maximale de 500 caractères par morceau.
-    chunk_overlap=50,    # Fait chevaucher les morceaux de 50 caractères pour conserver le contexte.
-    add_start_index=True,  # Ajoute l'index de début de chaque morceau dans les métadonnées.
-)
+# ==========================================================
+# Configuration
+# ==========================================================
 
-all_splits = text_splitter.split_documents(docs)  # Découpe les documents chargés en plusieurs morceaux.
+DOCUMENT_PATH = "data/exemple_finance.txt"
 
-print(f"Document découpé en {len(all_splits)} morceaux (chunks)")  # Affiche le nombre total de morceaux créés.
+COLLECTION_NAME = "policybot_test"
 
-###  Embeddings + stockage dans Chroma ###
- 
-from langchain_huggingface import HuggingFaceEmbeddings  # Importe la classe permettant de transformer du texte en vecteurs (embeddings) avec un modèle Hugging Face.
-from langchain_chroma import Chroma  # Importe Chroma, une base de données vectorielle utilisée pour stocker et rechercher les embeddings.
+CHROMA_PATH = "./chroma_db"
 
-embeddings = HuggingFaceEmbeddings(  # Crée un objet chargé de générer les embeddings des textes.
-    model_name="sentence-transformers/all-MiniLM-L6-v2"  # Utilise le modèle "all-MiniLM-L6-v2", rapide et performant pour convertir chaque chunk en un vecteur numérique.
-)
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
-vector_store = Chroma(  # Crée une base de données vectorielle Chroma.
-    collection_name="policybot_test",  # Donne le nom "policybot_test" à la collection qui contiendra les embeddings.
-    embedding_function=embeddings,  # Indique à Chroma d'utiliser le modèle d'embeddings défini précédemment pour convertir les textes en vecteurs.
-    persist_directory="./chroma_db",  # Spécifie le dossier où la base Chroma sera enregistrée sur le disque afin de pouvoir être réutilisée plus tard.
-)
 
-document_ids = vector_store.add_documents(  # Ajoute tous les chunks de texte à la base vectorielle.
-    documents=all_splits  # Les documents découpés sont convertis en embeddings puis stockés dans Chroma avec leurs métadonnées.
-)
 
-print(f"{len(document_ids)} chunks stockés dans Chroma")  # Affiche le nombre de chunks qui ont été indexés et enregistrés dans la base vectorielle
+# ==========================================================
+# Fonction : Charger le document
+# ==========================================================
+
+def load_document(path):
+    """
+    Charge un fichier texte et retourne
+    la liste des documents.
+    """
+
+    loader = TextLoader(
+        path,
+        encoding="utf-8"
+    )
+
+    documents = loader.load()
+
+
+    print(
+        f"Nombre de documents chargés : {len(documents)}"
+    )
+
+
+    print(
+        f"Aperçu : {documents[0].page_content[:200]}"
+    )
+
+
+    return documents
+
+
+
+# ==========================================================
+# Fonction : Découper en chunks
+# ==========================================================
+
+def split_documents(documents):
+    """
+    Découpe les documents en morceaux
+    avec chevauchement.
+    """
+
+    splitter = RecursiveCharacterTextSplitter(
+
+        chunk_size=500,
+
+        chunk_overlap=50,
+
+        add_start_index=True,
+    )
+
+
+    chunks = splitter.split_documents(
+        documents
+    )
+
+
+    print(
+        f"Document découpé en {len(chunks)} chunks"
+    )
+
+
+    return chunks
+
+
+
+# ==========================================================
+# Fonction : Créer la base vectorielle Chroma
+# ==========================================================
+
+def create_vectorstore(chunks):
+    """
+    Génère les embeddings et stocke
+    les chunks dans Chroma.
+    """
+
+
+    embeddings = HuggingFaceEmbeddings(
+        model_name=EMBEDDING_MODEL
+    )
+
+
+    vector_store = Chroma(
+
+        collection_name=COLLECTION_NAME,
+
+        embedding_function=embeddings,
+
+        persist_directory=CHROMA_PATH,
+
+    )
+
+
+    ids = vector_store.add_documents(
+        documents=chunks
+    )
+
+
+    print(
+        f"{len(ids)} chunks stockés dans Chroma"
+    )
+
+
+    return vector_store
+
+
+
+# ==========================================================
+# Programme principal
+# ==========================================================
+
+def main():
+
+
+    # 1) Chargement du document
+    docs = load_document(
+        DOCUMENT_PATH
+    )
+
+
+    # 2) Découpage en chunks
+    chunks = split_documents(
+        docs
+    )
+
+
+    # 3) Embeddings + Chroma
+    vector_store = create_vectorstore(
+        chunks
+    )
+
+
+    return vector_store
+
+
+
+# Point d'entrée
+if __name__ == "__main__":
+
+    vector_store = main()
