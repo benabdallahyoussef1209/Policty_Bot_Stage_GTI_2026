@@ -62,7 +62,7 @@ def afficher_premier_chunk(chunks, taille):
 # Fonction : Afficher un chunk provenant d'un document précis
 # ==========================================================
 def afficher_chunk(chunks, mot_cle, titre):
-    """Recherche puis affiche un chunk correspondant au mot-clé."""
+    """Recherche puis afficher un chunk correspondant au mot-clé."""
 
     chunk = next(
         c for c in chunks
