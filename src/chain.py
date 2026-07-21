@@ -9,13 +9,14 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 # --- Paramètres du modèle, centralisés ici ---
-MODEL_NAME = "phi3"
+MODEL_NAME = "qwen2.5:3b"
 TEMPERATURE = 0  # réponses déterministes, importantes pour un système RAG
-DEFAULT_K = 5    # nombre de chunks récupérés par question
-
+DEFAULT_K = 15   # nombre de chunks récupérés par question
+SEED = 42          # pour la reproductibilité des tests
 RAG_PROMPT = """
 Réponds à la question en te basant uniquement sur le contexte ci-dessous.
-Si tu ne trouves pas la réponse dans le contexte, dis "Je ne sais pas".
+Si l'information demandée n'est pas présente dans le contexte, réponds exactement :
+"Je ne sais pas — cette information n'est pas présente dans les documents fournis."
 
 Contexte :
 {context}
@@ -25,7 +26,6 @@ Question :
 
 Réponse :
 """
-
 
 def format_docs(docs):
     """Fusionne le contenu textuel de plusieurs chunks en un seul bloc de contexte."""
@@ -51,7 +51,7 @@ def ask(question: str, vector_store, k: int = DEFAULT_K):
 
     # 3. Construction du prompt et appel au LLM local via Ollama
     prompt = ChatPromptTemplate.from_template(RAG_PROMPT)
-    llm = ChatOllama(model=MODEL_NAME, temperature=TEMPERATURE)
+    llm = ChatOllama(model=MODEL_NAME, temperature=TEMPERATURE, seed=SEED)
     chain = prompt | llm | StrOutputParser()
 
     reponse = chain.invoke({"context": context, "question": question})
