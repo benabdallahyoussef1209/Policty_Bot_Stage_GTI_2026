@@ -20,9 +20,8 @@ COLLECTION_NAME = "policybot"
 # Choix basé sur ton propre test (test_chunking.py) :
 # chunk_size=1000 s'est montré plus clair, surtout pour les documents longs
 # (rapports Apple / Tesla), tout en restant correct pour les documents courts.
-CHUNK_SIZE = 1000
+CHUNK_SIZE =1000
 CHUNK_OVERLAP = 100
-
 
 def load_documents(dossier: str = DATA_DIR):
     """
@@ -64,7 +63,7 @@ def build_vectorstore():
     )
 
     nb_chunks_existants = vector_store._collection.count()
-
+#dans ce code on n'obtient jamais des doublons car on ne fait jamais d'ajout si la base n'est pas vide.
     if nb_chunks_existants == 0:
         print("Base vectorielle vide -> ingestion des documents en cours...")
         docs = load_documents()
