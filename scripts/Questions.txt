@@ -1,0 +1,46 @@
+# ============================================================
+# questions_test_s4.py
+# Liste de questions de test pour la Semaine 4 - Jour 3
+# "Tester les cas limites + petites finitions"
+#
+# Copie ces questions une par une dans l'interface Streamlit
+# pour vérifier le comportement de l'application.
+# ============================================================
+
+questions_pertinentes = [
+    "Combien d'hôtels possède Apple Hospitality REIT au 31 décembre 2024 ?",
+    "Quels sont les risques liés à la chaîne d'approvisionnement de Tesla ?",
+    "Pourquoi Wells Fargo a signalé un paiement en retard sur une carte de crédit inactive ?",
+    "Quel problème de taxes foncières est mentionné dans la réclamation Pulte Mortgage ?",
+    "Quelle est la différence entre taux d'intérêt nominal et taux d'intérêt réel ?",
+]
+
+questions_hors_sujet = [
+    "Quelle est la capitale de la France ?",
+    "Quel est le meilleur restaurant de Tunis ?",
+    "Comment fait-on une omelette ?",
+]
+
+questions_ambigues_ou_mal_formulees = [
+    "Quels sont les risques ?",
+    "parle moi de l'entreprise stp",
+]
+
+questions_cas_limites_techniques = [
+    "",  # question vide
+    "   ",  # espaces seulement
+    "?",  # un seul caractère
+    "a" * 500,  # question très longue
+    "Quels sont les risques???!!!",  # ponctuation excessive
+    "QUELS SONT LES RISQUES DE TESLA",  # tout en majuscules
+    "quels sont les risques de tesla mais aussi les risques d'apple hospitality et les problemes de wells fargo et de pulte mortgage tout en meme temps",  # question multi-sujets
+]
+
+# ============================================================
+# Récapitulatif pour le tableau de suivi (Jour 3)
+# ============================================================
+# Pour chaque question testée, note :
+# - La réponse est-elle correcte / cohérente ?
+# - La source est-elle citée correctement ?
+# - L'application reste-t-elle stable (pas de crash) ?
+# - Le spinner de chargement s'affiche-t-il bien pendant le traitement ?
