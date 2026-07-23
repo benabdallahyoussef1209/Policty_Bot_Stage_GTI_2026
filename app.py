@@ -1,6 +1,14 @@
-import streamlit as st
 from datetime import datetime
 import os
+import streamlit as st
+from src.chain import ask
+from src.ingest import build_vectorstore
+
+
+@st.cache_resource
+def charger_vector_store():
+    return build_vectorstore()
+
 
 # ============================================================
 # Configuration de la page
@@ -18,7 +26,7 @@ st.set_page_config(
 USERS = {
     "admin": {"password": "admin123", "role": "admin", "nom": "Administrateur"},
     "alice": {"password": "alice123", "role": "user", "nom": "Alice Martin"},
-    "bob":   {"password": "bob123",   "role": "user", "nom": "Bob Dupont"},
+    "bob": {"password": "bob123", "role": "user", "nom": "Bob Dupont"},
 }
 
 # ============================================================
@@ -32,21 +40,14 @@ if "role" not in st.session_state:
     st.session_state.role = None
 
 if "historique" not in st.session_state:
-    st.session_state.historique = []  # historique perso de l'utilisateur connecté
+    st.session_state.historique = []
 if "historique_global" not in st.session_state:
-    st.session_state.historique_global = []  # [{"user":..., "question":..., "date":...}]
-
+    st.session_state.historique_global = []
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 if "mode_sombre" not in st.session_state:
     st.session_state.mode_sombre = False
 
-# ============================================================
-# Auto-refresh pour l'horloge en temps réel
-# ============================================================
-try:
-    from streamlit_autorefresh import st_autorefresh
-    st_autorefresh(interval=1000, key="horloge")
-except ImportError:
-    pass
 
 # ============================================================
 # Palette & styles globaux
@@ -234,7 +235,7 @@ def afficher_login():
 
 
 # ============================================================
-# BANDEAU SUPÉRIEUR (commun) : date/heure + logo + rôle + déconnexion
+# BANDEAU SUPÉRIEUR (commun)
 # ============================================================
 def afficher_topbar():
     maintenant = datetime.now().strftime("%d/%m/%Y — %H:%M:%S")
@@ -247,7 +248,9 @@ def afficher_topbar():
     col_brand, col_user, col_theme, col_logout = st.columns([6, 2, 1, 1])
 
     with col_brand:
-        role_label = "Admin" if st.session_state.role == "admin" else "Utilisateur"
+        role_label = (
+            "Admin" if st.session_state.role == "admin" else "Utilisateur"
+        )
         st.markdown(
             f"""
             <div class="topbar" style="justify-content:flex-start; gap:14px;">
@@ -291,34 +294,46 @@ def afficher_topbar():
     st.divider()
 
 
+
 # ============================================================
 # DASHBOARD UTILISATEUR
 # ============================================================
+def lire_apercu_document(chemin_fichier, max_caracteres=2000):
+    """Lit un aperçu du contenu d'un document (txt ou pdf)."""
+    try:
+        if chemin_fichier.endswith(".txt"):
+            with open(chemin_fichier, "r", encoding="utf-8") as f:
+                contenu = f.read()
+            return contenu[:max_caracteres]
+        elif chemin_fichier.endswith(".pdf"):
+            from langchain_community.document_loaders import PyPDFLoader
+            loader = PyPDFLoader(chemin_fichier)
+            pages = loader.load()
+            contenu = "\n\n".join(p.page_content for p in pages)
+            return contenu[:max_caracteres]
+        else:
+            return "Format non pris en charge pour l'aperçu."
+    except Exception as e:
+        return f"Erreur lors de la lecture : {e}"
+
 def afficher_dashboard_utilisateur():
     with st.sidebar:
-        st.markdown('<div class="section-title">📜 Mon historique</div>', unsafe_allow_html=True)
-        if st.session_state.historique:
-            for i, q in enumerate(reversed(st.session_state.historique), 1):
-                st.markdown(f'<div class="hist-item">{i}. {q}</div>', unsafe_allow_html=True)
-        else:
-            st.caption("Aucune question posée pour l'instant.")
-
-        st.divider()
-
         st.markdown('<div class="section-title">📁 Documents disponibles</div>', unsafe_allow_html=True)
         dossier_data = "data/raw"
         if os.path.exists(dossier_data):
             fichiers = sorted(os.listdir(dossier_data))
             if fichiers:
                 for f in fichiers:
-                    st.markdown(f'<div class="doc-card">📄 {f}</div>', unsafe_allow_html=True)
+                    with st.expander(f"📄 {f}"):
+                        apercu = lire_apercu_document(os.path.join(dossier_data, f))
+                        st.text(apercu + "...")
             else:
                 st.caption("Dossier vide.")
         else:
             st.caption("Aucun document trouvé.")
 
     nb_docs = len(os.listdir("data/raw")) if os.path.exists("data/raw") else 0
-    nb_questions = len(st.session_state.historique)
+    nb_questions = len([m for m in st.session_state.messages if m["role"] == "user"])
 
     col_m1, col_m2, col_m3 = st.columns(3)
     with col_m1:
@@ -341,46 +356,51 @@ def afficher_dashboard_utilisateur():
         )
 
     st.write("")
-    st.markdown('<div class="section-title">💬 Poser une question</div>', unsafe_allow_html=True)
 
-    question = st.text_input(
-        "Ta question",
-        placeholder="Ex. Quels sont les risques mentionnés dans le rapport Tesla ?",
-        label_visibility="collapsed",
-    )
+    # ===== Historique de conversation =====
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+            if message["role"] == "assistant" and message.get("sources"):
+                with st.expander("📄 Sources"):
+                    for s in message["sources"]:
+                        st.caption(s)
+
+    # ===== Nouveau message =====
+    question = st.chat_input("Pose ta question sur les documents...")
 
     if question:
-        if question not in st.session_state.historique:
-            st.session_state.historique.append(question)
-            st.session_state.historique_global.append({
-                "user": st.session_state.username,
-                "question": question,
-                "date": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-            })
+        st.session_state.messages.append({"role": "user", "content": question})
+        with st.chat_message("user"):
+            st.markdown(question)
 
-        st.markdown(
-            f"""
-            <div class="answer-box">
-                <div class="answer-label">Question</div>
-                <div style="font-size:15px; margin-bottom:16px;">{question}</div>
-                <div class="answer-label">Réponse</div>
-                <div style="font-size:14.5px; color:{TEXT_MUTED};">
-                    (Réponse générée par le moteur documentaire à connecter ici.)
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
+        vector_store = charger_vector_store()
+        with st.chat_message("assistant"):
+            with st.spinner("Recherche en cours..."):
+                reponse, sources = ask(question, vector_store)
+            st.markdown(reponse)
+            if sources:
+                with st.expander("📄 Sources"):
+                    for s in sources:
+                        st.caption(s)
+
+        st.session_state.messages.append(
+            {"role": "assistant", "content": reponse, "sources": sources}
         )
-    else:
-        st.info("Tape une question ci-dessus pour commencer.")
 
-
+        st.session_state.historique_global.append({
+            "user": st.session_state.username,
+            "question": question,
+            "date": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        })
 # ============================================================
 # DASHBOARD ADMIN
 # ============================================================
 def afficher_dashboard_admin():
     dossier_data = "data/raw"
-    nb_docs = len(os.listdir(dossier_data)) if os.path.exists(dossier_data) else 0
+    nb_docs = (
+        len(os.listdir(dossier_data)) if os.path.exists(dossier_data) else 0
+    )
     nb_questions_total = len(st.session_state.historique_global)
     nb_utilisateurs = len(USERS)
 
@@ -411,9 +431,14 @@ def afficher_dashboard_admin():
 
     # ---- Onglet documents ----
     with onglet_docs:
-        st.markdown('<div class="section-title">Ajouter un document</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div class="section-title">Ajouter un document</div>',
+            unsafe_allow_html=True,
+        )
         fichier_televerse = st.file_uploader(
-            "Ajouter un document", type=["pdf", "docx", "txt", "csv"], label_visibility="collapsed"
+            "Ajouter un document",
+            type=["pdf", "docx", "txt", "csv"],
+            label_visibility="collapsed",
         )
         if fichier_televerse is not None:
             os.makedirs(dossier_data, exist_ok=True)
@@ -424,14 +449,19 @@ def afficher_dashboard_admin():
             st.rerun()
 
         st.write("")
-        st.markdown('<div class="section-title">Documents existants</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div class="section-title">Documents existants</div>',
+            unsafe_allow_html=True,
+        )
         if os.path.exists(dossier_data):
             fichiers = sorted(os.listdir(dossier_data))
             if fichiers:
-                for f in fichiers:
+              for f in fichiers:
                     col_nom, col_suppr = st.columns([5, 1])
                     with col_nom:
-                        st.markdown(f'<div class="doc-card">📄 {f}</div>', unsafe_allow_html=True)
+                        with st.expander(f"📄 {f}"):
+                            apercu = lire_apercu_document(os.path.join(dossier_data, f))
+                            st.text(apercu + "...")
                     with col_suppr:
                         if st.button("🗑️", key=f"suppr_{f}"):
                             os.remove(os.path.join(dossier_data, f))
@@ -443,7 +473,10 @@ def afficher_dashboard_admin():
 
     # ---- Onglet historique global ----
     with onglet_hist:
-        st.markdown('<div class="section-title">Toutes les questions posées</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div class="section-title">Toutes les questions posées</div>',
+            unsafe_allow_html=True,
+        )
         if st.session_state.historique_global:
             for entree in reversed(st.session_state.historique_global):
                 st.markdown(
@@ -456,20 +489,32 @@ def afficher_dashboard_admin():
 
     # ---- Onglet gestion des comptes ----
     with onglet_comptes:
-        st.markdown('<div class="section-title">Comptes existants</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div class="section-title">Comptes existants</div>',
+            unsafe_allow_html=True,
+        )
         for u, infos in USERS.items():
             col_nom, col_role, col_suppr = st.columns([3, 2, 1])
             with col_nom:
-                st.markdown(f'<div class="doc-card">👤 {infos["nom"]} ({u})</div>', unsafe_allow_html=True)
+                st.markdown(
+                    f'<div class="doc-card">👤 {infos["nom"]} ({u})</div>',
+                    unsafe_allow_html=True,
+                )
             with col_role:
-                st.markdown(f'<span class="badge-role">{infos["role"]}</span>', unsafe_allow_html=True)
+                st.markdown(
+                    f'<span class="badge-role">{infos["role"]}</span>',
+                    unsafe_allow_html=True,
+                )
             with col_suppr:
                 if u != "admin" and st.button("🗑️", key=f"suppr_user_{u}"):
                     del USERS[u]
                     st.rerun()
 
         st.write("")
-        st.markdown('<div class="section-title">Ajouter un compte</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div class="section-title">Ajouter un compte</div>',
+            unsafe_allow_html=True,
+        )
         with st.form("form_ajout_compte"):
             c1, c2, c3 = st.columns(3)
             with c1:
